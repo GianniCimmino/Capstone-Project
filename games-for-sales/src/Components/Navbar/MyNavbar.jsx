@@ -1,4 +1,5 @@
 import React from "react";
+import "./MyNavbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Button,
@@ -8,12 +9,13 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import logo from "../Assets/Logo.svg";
 
 function MyNavbar() {
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">Games For Sales</Navbar.Brand>
+        <img className="nav-logo" src={logo} alt="" />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

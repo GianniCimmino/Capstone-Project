@@ -1,4 +1,4 @@
-import MyNavbar from "./Components/MyNavbar";
+import MyNavbar from "./Components/Navbar/MyNavbar.jsx";
 
 function App() {
   return <MyNavbar />;
