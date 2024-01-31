@@ -1,73 +1,64 @@
 import React, { useEffect, useState } from "react";
-
 import "./MyNavbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import logo from "../Assets/Logo.png";
-import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
+import {
+  Container,
+  Navbar,
+  Button,
+  Form,
+  Nav,
+  NavDropdown,
+} from "react-bootstrap";
+import Logo from "../Assets/Logo.png";
 
 function MyNavbar() {
-  const [menu, setMenu] = useState("console");
-
   return (
-    <div className="navbar">
-      <div className="nav-logo">
-        <img src={logo} alt="" />
-      </div>
-      <ul className="nav-menu">
-        <li
-          onClick={() => {
-            setMenu("gamesforsales");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/">
-            Games For Sales
-          </Link>
-          {menu === "gamesforsales" ? <hr /> : <></>}
-        </li>
-        <li
-          onClick={() => {
-            setMenu("console");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/console">
-            Console
-          </Link>
-          {menu === "console" ? <hr /> : <></>}
-        </li>
-        <li
-          onClick={() => {
-            setMenu("games");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/games">
-            Giochi
-          </Link>{" "}
-          {menu === "games" ? <hr /> : <></>}
-        </li>
-        <li
-          onClick={() => {
-            setMenu("accessories");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/accessories">
-            Accessori
-          </Link>
-          {menu === "accessories" ? <hr /> : <></>}
-        </li>
-      </ul>
-      <div className="nav-login-cart">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/cart">
-          <img src={cart_icon} alt="" />
-        </Link>
-
-        <div className="nav-cart-count">0</div>
-      </div>
-    </div>
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+      <Container fluid>
+        <Navbar.Brand href="#">
+          <img
+            src={Logo}
+            width="90"
+            height="90"
+            className="d-inline-block align-top"
+            alt="Logo"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Nav.Link to="/">Home</Nav.Link>
+            <Nav.Link href="#action2"></Nav.Link>
+            <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">
+                Something else here
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#" disabled>
+              Link
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Cerca un gioco/console"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Cerca</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 export default MyNavbar;

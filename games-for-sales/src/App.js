@@ -13,7 +13,6 @@ function App() {
       <MyNavbar />
       <Routes>
         <Route path="/" element={<GamesForSales />} />
-
         <Route path="/console" element={<ShopCategory category="console" />} />
         <Route path="/games" element={<ShopCategory category="games" />} />
         <Route
