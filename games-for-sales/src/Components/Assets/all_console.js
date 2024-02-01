@@ -13,7 +13,7 @@ import p12_img from "./Xbox Series S White.jpg";
 import p13_img from "./Xbox Series S.jpg";
 import p14_img from "./Xbox Series X.jpg";
 
-let all_product = [
+let all_console = [
   {
     id: 1,
     name: "Nintendo Switch",
@@ -127,3 +127,5 @@ let all_product = [
     old_price: 539.99,
   },
 ];
+
+export default all_console;
