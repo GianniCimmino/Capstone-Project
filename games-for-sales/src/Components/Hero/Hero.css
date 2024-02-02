@@ -1,20 +1,18 @@
-.body{
-    background-color: #5d5d5d;
-}
+
 
 .game-image-container {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
+}
+
+.game-image-container img {
+  width: 50%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
   }
   
-  .game-image-container img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .game-image-container:hover img,
-  .game-image-container.hovered img {
+  .game-image-container:hover img {
     transform: scale(1.1);
   }
   
@@ -26,4 +24,8 @@
     color: #fff;
     padding: 10px;
     margin: 0;
+  }
+
+  .title-holder h2{
+    color: white;
   }

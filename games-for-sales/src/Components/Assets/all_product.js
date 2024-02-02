@@ -7,16 +7,16 @@ import p6_img from "./PS4 StarWars.jpg";
 import p7_img from "./PS5 Black.jpg";
 import p8_img from "./PS5 God Of War.jpg";
 import p9_img from "./PS5 SLIM.jpg";
-import p10_img from "./PS5 SpiderMan.jpg";
+import p10_img from "./PS5 Spiderman.jpg";
 import p11_img from "./Xbox Series S Offerta.jpg";
 import p12_img from "./Xbox Series S White.jpg";
 import p13_img from "./Xbox Series S.jpg";
 import p14_img from "./Xbox Series X.jpg";
 
-let all_console = [
+let all_product = [
   {
     id: 1,
-    name: "Nintendo Switch",
+    name: "Nintendo Switch OLED",
     category: "Console",
     image: p1_img,
     new_price: 449.9,
@@ -24,7 +24,7 @@ let all_console = [
   },
   {
     id: 2,
-    name: "Nintendo Switch 2",
+    name: "Nintendo Switch Black",
     category: "Console",
     image: p2_img,
     new_price: 299.99,
@@ -32,7 +32,7 @@ let all_console = [
   },
   {
     id: 3,
-    name: "Nintendo Switch Oled",
+    name: "Nintendo Switch Mini",
     category: "Console",
     image: p3_img,
     new_price: 199.99,
@@ -128,4 +128,4 @@ let all_console = [
   },
 ];
 
-export default all_console;
+export default all_product;
