@@ -14,6 +14,7 @@ let all_games = [
     name: "Tekken 8",
     description:
       "Tekken 8 è un videogioco picchiaduro sviluppato e pubblicato da Bandai Namco Entertainment per PlayStation 5, Xbox Series X e Series S e Microsoft Windows. È l'ottavo titolo della serie Tekken.",
+    tags: ["hot"],
   },
 ];
 

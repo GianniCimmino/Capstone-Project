@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Hero.css";
 import { Container, Col, Row } from "react-bootstrap";
-import Image1 from "../Assets/tekken8.jpg";
 import all_product from "../Assets/all_product";
 
 const Hero = () => {
@@ -12,7 +11,7 @@ const Hero = () => {
         <h2>Di tendenza</h2>
       </div>
       <Row>
-        {all_product.map((item, index) => (
+        {all_product.slice(0, 9).map((item, index) => (
           <Col key={index} sm={8} md={6} lg={4}>
             <div className="game-image-container">
               <a href={`/product/${item.id}`}>
