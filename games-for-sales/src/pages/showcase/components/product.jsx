@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Col, Card, Button, Modal } from "react-bootstrap";
-import productService from "../../../services/products";
+import productService from "./Products";
 import ProductForm from "./ProductForm";
 
 const Product = ({ product, user, refreshProducts, removeProduct }) => {

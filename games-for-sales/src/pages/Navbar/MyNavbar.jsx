@@ -26,7 +26,7 @@ function MyNavbar() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/console">Console</Nav.Link>
-            <Nav.Link href="/games">Console</Nav.Link>
+            <Nav.Link href="/games">Giochi</Nav.Link>
             <Nav.Link href="/accessories">Accessori</Nav.Link>
           </Nav>
           <Form className="d-flex">
