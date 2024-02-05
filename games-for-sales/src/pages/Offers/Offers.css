@@ -1,10 +1,14 @@
+.bg {
+    background-color: #323232;
+}
+
 .offers{
     width: 80%;
     height: 60vh;
     display: flex;
     margin: auto;
     padding: 0px 140px;
-    margin-bottom: 150px;
+    margin: 50px;
 }
 .offers-left{
     flex: 1;
@@ -13,7 +17,7 @@
     justify-content: center;
 }
 .offers-left h1{
-    color: white;
+    color: #FF5F1F;
     font-size: 80px;
     font-weight: 600;
 }
@@ -21,7 +25,7 @@
     width: 282px;
     height: 70px;
     border-radius: 35px;
-    background: #638489;
+    background: linear-gradient(10deg,#ff8000,transparent) #ff4020;
     border: none;
     color: white;
     font-size: 22px;

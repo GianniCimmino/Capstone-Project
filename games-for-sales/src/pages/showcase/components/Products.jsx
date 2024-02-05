@@ -56,7 +56,7 @@ const Products = () => {
       )}
 
       <Row xs={1} md={2} lg={3} className="g-4">
-        {products.map((product) => (
+        {products.slice(0, 9).map((product) => (
           <Product
             key={product._id}
             user={user}

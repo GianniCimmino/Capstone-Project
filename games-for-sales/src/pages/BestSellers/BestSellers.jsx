@@ -8,7 +8,7 @@ const BestSellers = () => {
   return (
     <Container fluid className="body">
       <div className="title-holder">
-        <h2>Di tendenza</h2>
+        <h2>Più venduti</h2>
       </div>
       <Row>
         {all_product.slice(1, 7).map((item, index) => (

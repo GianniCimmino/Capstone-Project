@@ -3,7 +3,13 @@ import { Button, Form } from "react-bootstrap";
 
 const ProductForm = ({ product, callback }) => {
   const [editedProduct, setEditedProduct] = useState(
-    product || { title: "", description: "", price: 0.0, imageUrl: "" }
+    product || {
+      title: "",
+      category: "",
+      description: "",
+      price: 0.0,
+      imageUrl: "",
+    }
   );
 
   const handleEditChange = (e) => {
@@ -32,10 +38,23 @@ const ProductForm = ({ product, callback }) => {
         />
       </Form.Group>
       <Form.Group className="mb-3">
+        <Form.Label>Categoria</Form.Label>
+        <Form.Select
+          as="select"
+          name="category"
+          value={editedProduct.category}
+          onChange={handleEditChange}
+        >
+          <option>Console</option>
+          <option>Giochi</option>
+          <option>Accessori</option>
+        </Form.Select>
+      </Form.Group>
+      <Form.Group className="mb-3">
         <Form.Label>Descrizione</Form.Label>
         <Form.Control
           as="textarea"
-          rows={3}
+          rows={6}
           placeholder="Descrizione"
           name="description"
           value={editedProduct.description}
