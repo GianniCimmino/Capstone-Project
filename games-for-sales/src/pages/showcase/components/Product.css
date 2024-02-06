@@ -1,0 +1,19 @@
+.game-image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.game-image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+}
+    
+.game-image-container:hover img {
+    transform: scale(1.1);
+}
+
+.link {
+  text-decoration: none;
+}

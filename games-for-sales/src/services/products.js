@@ -6,6 +6,10 @@ const productService = {
     return axiosInstance.get("/products");
   },
 
+  getProduct: async (productId) => {
+    return axiosInstance.get(`/product/${productId}`);
+  },
+
   // Aggiungi un nuovo prodotto
   addProduct: async (productData) => {
     return axiosInstance.post("/products", productData);

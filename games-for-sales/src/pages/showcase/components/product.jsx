@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Card, Button, Modal } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import "./Product.css";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import productService from "./Products";
 import ProductForm from "./ProductForm";
 
@@ -20,53 +22,65 @@ const Product = ({ product, user, refreshProducts, removeProduct }) => {
     setShowModal(true);
   };
 
+  const navigate = useNavigate();
+
+  const handleImmagineClick = () => {
+    navigate(`/product`);
+  };
+
   return (
-    <Container fluid className="body">
+    <Container>
       <Row>
-        <Col>
-          <Card style={{ height: "100%" }}>
-            <Card.Img variant="top" src={product.imageUrl} />
-            <Card.Body>
-              <Card.Title>{product.title}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
-              <Card.Text>Prezzo: €{product.price}</Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-end">
-              {(user.roles || []).includes("UPDATE_PRODUCT") && (
-                <Button
-                  variant="primary"
-                  className="btn-block me-2"
-                  onClick={handleEdit}
-                >
-                  Edit
-                </Button>
-              )}
+        <Col className="game-image-container p-4">
+          <Link to={product._id} className="link">
+            <img
+              src={product.imageUrl}
+              alt={product.title}
+              onClick={() => handleImmagineClick(product._id)}
+              className="image-description"
+            ></img>
+          </Link>
+          <div className="d-flex justify-content-between">
+            <p className="text-white m-3">{product.title}</p>
+            <p className="text-white m-3">
+              {" "}
+              <strong>${product.price}</strong>
+            </p>
+          </div>
 
-              {(user.roles || []).includes("DELETE_PRODUCT") && (
-                <Button
-                  variant="danger"
-                  className="btn-block"
-                  onClick={() => removeProduct(product._id)}
-                >
-                  Remove
-                </Button>
-              )}
-            </Card.Footer>
-          </Card>
+          {(user.roles || []).includes("UPDATE_PRODUCT") && (
+            <Button
+              variant="primary"
+              className="btn-block me-2"
+              onClick={handleEdit}
+            >
+              Edit
+            </Button>
+          )}
 
-          {/* Modale per la modifica del prodotto */}
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modifica Prodotto</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <ProductForm
-                product={product}
-                callback={handleEditSubmit}
-              ></ProductForm>
-            </Modal.Body>
-          </Modal>
+          {(user.roles || []).includes("DELETE_PRODUCT") && (
+            <Button
+              variant="danger"
+              className="btn-block"
+              onClick={() => removeProduct(product._id)}
+            >
+              Remove
+            </Button>
+          )}
         </Col>
+
+        {/* Modale per la modifica del prodotto */}
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modifica Prodotto</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ProductForm
+              product={product}
+              callback={handleEditSubmit}
+            ></ProductForm>
+          </Modal.Body>
+        </Modal>
       </Row>
     </Container>
   );

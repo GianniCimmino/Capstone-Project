@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Modal, Row } from "react-bootstrap";
 import productService from "../../../services/products";
-import Product from "./product";
+import Product from "./Product";
 import ProductForm from "./ProductForm";
 
 const Products = () => {
@@ -55,7 +55,7 @@ const Products = () => {
         </Row>
       )}
 
-      <Row xs={1} md={2} lg={3} className="g-4">
+      <Row xs={1} md={2} lg={3}>
         {products.slice(0, 9).map((product) => (
           <Product
             key={product._id}
