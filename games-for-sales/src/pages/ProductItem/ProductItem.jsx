@@ -3,15 +3,27 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import "./ProductItem.css";
 import productService from "../../services/products";
 
-const GamePage = () => {
+const ProductItem = () => {
+  const [product, setProduct] = useState([]);
+
+  const fetchProduct = async (product) => {
+    try {
+      const response = await productService.getProduct();
+      setProduct(response.data);
+    } catch (error) {
+      console.error("Errore nel recupero del prodotto:", error);
+    }
+  };
+
   return (
     <Container className="mt-5 text-white">
       <Row>
+        {product.find}
         <Col md={6}>
-          <Image src={productItem.image} alt="Immagine del prodotto" fluid />
+          <Image src={product.image} alt="Immagine del prodotto" fluid />
         </Col>
         <Col md={6}>
-          <h2>{productItem.title}</h2>
+          <h2>{product.title}</h2>
           <p>
             Descrizione del videogioco. Questo è un gioco fantastico che ti
             immerge in un mondo avvincente pieno di avventure e sfide.
@@ -30,4 +42,4 @@ const GamePage = () => {
   );
 };
 
-export default GamePage;
+export default ProductItem;

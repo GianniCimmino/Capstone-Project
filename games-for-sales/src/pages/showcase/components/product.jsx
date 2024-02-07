@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Product.css";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import productService from "./Products";
@@ -24,22 +24,20 @@ const Product = ({ product, user, refreshProducts, removeProduct }) => {
 
   const navigate = useNavigate();
 
-  const handleImmagineClick = () => {
-    navigate(`/product`);
+  const handleImmagineClick = (productId) => {
+    navigate(`/product/${productId}`);
   };
 
   return (
     <Container>
       <Row>
         <Col className="game-image-container p-4">
-          <Link to={product._id} className="link">
-            <img
-              src={product.imageUrl}
-              alt={product.title}
-              onClick={() => handleImmagineClick(product._id)}
-              className="image-description"
-            ></img>
-          </Link>
+          <img
+            src={product.imageUrl}
+            alt={product.title}
+            onClick={() => handleImmagineClick(product._id)}
+            className="image-description"
+          ></img>
           <div className="d-flex justify-content-between">
             <p className="text-white m-3">{product.title}</p>
             <p className="text-white m-3">
