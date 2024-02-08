@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className="background mt-5">
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
           <Card>

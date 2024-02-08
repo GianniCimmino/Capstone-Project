@@ -57,15 +57,16 @@ const Register = () => {
                     required
                   />
                 </Form.Group>
-
-                <Button variant="primary" type="submit" className="btn-block">
-                  Registrati!
-                </Button>
-                <Link to="/login">
-                  <Button variant="secondary" className="btn-block">
-                    Accedi
+                <div className="login-footer">
+                  <Button variant="primary" type="submit" className="btn-block">
+                    Registrati!
                   </Button>
-                </Link>
+                  <Link to="/login">
+                    <Button variant="primary" className="btn-block">
+                      Accedi
+                    </Button>
+                  </Link>
+                </div>
               </Form>
             </Card.Body>
           </Card>

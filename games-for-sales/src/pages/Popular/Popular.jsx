@@ -31,12 +31,12 @@ const Popular = ({ product, user, refreshProducts, removeProduct }) => {
   return (
     <Container>
       <Row>
-        <Col className="game-image-container p-4">
+        <Col className="game-image-container p-4 ">
           <img
             src={product?.imageUrl}
             alt={product?.title}
             onClick={() => handleImmagineClick(product?._id)}
-            className="image-description"
+            className="image-description w-100 "
           ></img>
           <div className="d-flex justify-content-between">
             <p className="text-white m-3">{product?.title}</p>

@@ -1,12 +1,13 @@
 import React from "react";
+import "./MyFooter.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { SocialIcon } from "react-social-icons";
 
 const MyFooter = () => {
   return (
-    <footer className="mt-5 text-white">
+    <footer className="bg mt-5 text-white">
       <hr />
-      <Container>
+      <Container className="p-3">
         <Row>
           <Col md={4}>
             <h5>Informazioni</h5>
@@ -21,26 +22,27 @@ const MyFooter = () => {
           </Col>
           <Col md={4}>
             <h5>Seguici</h5>
-            <Link
-              className="text-white"
-              to="https://www.linkedin.com/in/gianni-cimmino-fsdeveloper/"
-            >
-              <p>LinkedIn</p>
-            </Link>
-            <Link className="text-white" to="https://github.com/GianniCimmino">
-              <p>GitHub</p>
-            </Link>
-            <Link
-              className="text-white"
-              to="https://www.instagram.com/giannicimmino/"
-            >
-              <p>Instagram</p>
-            </Link>
+            <SocialIcon
+              className="m-2"
+              network="linkedin"
+              url="https://www.linkedin.com/in/gianni-cimmino-fsdeveloper/"
+            />
+            <SocialIcon
+              className="m-2"
+              network="github"
+              url="https://github.com/GianniCimmino"
+            />
+            <SocialIcon
+              className="m-2"
+              network="instagram"
+              url="https://www.instagram.com/giannicimmino/"
+            />
           </Col>
         </Row>
       </Container>
-      <div className="text-center py-3 bg-dark text-light">
-        <p>&copy; 2024 Gianni Cimmino</p>
+      <hr />
+      <div className="text-center py-1 text-light">
+        <p>Copyright &copy; 2024 Gianni Cimmino - All rights reserved </p>
       </div>
     </footer>
   );

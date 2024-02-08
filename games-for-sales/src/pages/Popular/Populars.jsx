@@ -42,6 +42,8 @@ const Populars = () => {
 
   useEffect(() => {
     fetchProducts();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (
@@ -60,7 +62,7 @@ const Populars = () => {
 
       <Row xs={1} md={2} lg={3}>
         {products
-          .filter((product) => product.category == "Console")
+          .filter((product) => product.category === "Console")
           .map((product) => (
             <Popular
               key={product._id}

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import "./ProductItem.css";
+import "./ProductGame.css";
 
 import productService from "../../services/products";
 
-const ProductItem = () => {
+const ProductGame = () => {
   const [product, setProduct] = useState([]);
 
   const { productId } = useParams();
@@ -15,20 +15,22 @@ const ProductItem = () => {
       const response = await productService.getProduct(productId);
       setProduct(response.data);
     } catch (error) {
-      console.error("Errore nel recupero dei prodotti:", error);
+      console.error("Errore nel recupero del prodotto:", error);
     }
   };
   useEffect(() => {
     fetchProducts();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container className="mt-5 text-white">
-      <Row>
+      <Row className="d-flex justify-content-center">
         <img src={product.imageUrl} alt={product.title} className="w-75"></img>
+        <h1 className="w-50 mt-5">{product.title}</h1>
       </Row>
       <Row>
-        <h1>{product.title}</h1>
         <Col className="m-5">
           <h3>Riguardo al gioco</h3>
           <p>{product.description}</p>
@@ -96,4 +98,4 @@ const ProductItem = () => {
   );
 };
 
-export default ProductItem;
+export default ProductGame;

@@ -8,6 +8,7 @@
     height: auto;
     transition: transform 0.3s ease-in-out;
     object-fit: cover;
+    cursor: pointer;
 }
     
 .game-image-container:hover img {

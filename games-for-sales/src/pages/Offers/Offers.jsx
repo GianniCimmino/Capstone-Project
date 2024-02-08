@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Offers.css";
-import esclusive_image from "../Assets/MGS.jpg";
+import productService from "../../services/products";
+import Offer from "./Offer";
 
 const Offers = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await productService.getAllProducts();
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Errore nel recupero dei prodotti:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
-    <div className="bg">
-      <div className="offers">
-        <div className="offers-left">
-          <h1>Preordina Ora!</h1>
-          <button>Preordina</button>
-        </div>
-        <div className="offers-right">
-          <img src={esclusive_image} alt="" />
-        </div>
-      </div>
+    <div>
+      {products
+        .find((product) => product._id === ._id)
+        .map((product) => (
+          <Offer
+            key={product._id}
+            product={product}
+            refreshProducts={fetchProducts}
+          />
+        ))}
+      <Offer
+        key={product._id}
+        product={product}
+        refreshProducts={fetchProducts}
+      />
     </div>
   );
 };
