@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth";
+import { useToken } from "../../configurations/tokenContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { token, setToken } = useToken();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.login(username, password);
+      const response = await authService.login(username, password);
+      setToken(response.data.token);
       console.log("Login successful");
       navigate("/showcase");
     } catch (error) {
@@ -55,10 +58,21 @@ const Login = () => {
                     required
                   />
                 </Form.Group>
-
-                <Button variant="primary" type="submit" className="btn-block">
-                  Accedi
-                </Button>
+                <div className="login-footer">
+                  <Link to="../showcase">Continua come ospite</Link>
+                  <Button variant="primary" type="submit" className="btn-block">
+                    Accedi
+                  </Button>
+                  <Link to="/register">
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      className="btn-block"
+                    >
+                      Registrati
+                    </Button>
+                  </Link>
+                </div>
               </Form>
             </Card.Body>
           </Card>

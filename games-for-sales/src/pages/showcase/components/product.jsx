@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Product.css";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
-import productService from "./Products";
+import Products from "./Products";
 import ProductForm from "./ProductForm";
 
 const Product = ({ product, user, refreshProducts, removeProduct }) => {
@@ -10,7 +10,7 @@ const Product = ({ product, user, refreshProducts, removeProduct }) => {
 
   const handleEditSubmit = async (editedProduct) => {
     try {
-      await productService.updateProduct(product._id, editedProduct);
+      await Products.updateProduct(product._id, editedProduct);
       refreshProducts();
     } catch (error) {
       alert(error);
@@ -42,7 +42,7 @@ const Product = ({ product, user, refreshProducts, removeProduct }) => {
             <p className="text-white m-3">{product.title}</p>
             <p className="text-white m-3">
               {" "}
-              <strong>${product.price}</strong>
+              <strong>€{product.price}</strong>
             </p>
           </div>
 

@@ -7,22 +7,27 @@ import Register from "./pages/register/Register";
 import Showcase from "./pages/showcase/Showcase.jsx";
 import NotFound from "./pages/notfound/NotFound";
 import ProductItem from "./pages/ProductItem/ProductItem.jsx";
+import MyFooter from "./pages/Footer/MyFooter.jsx";
+import { TokenProvider } from "./configurations/tokenContext.js";
 
 function App() {
   return (
     <BrowserRouter>
-      <MyNavbar />
-      <Routes>
-        <Route
-          path=""
-          element={<Navigate to="/showcase" />}
-          errorElement={<NotFound />}
-        />
-        <Route path="/product/:productId" element={<ProductItem />} />
-        <Route path="/showcase" element={<Showcase />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <TokenProvider>
+        <MyNavbar />
+        <Routes>
+          <Route
+            path=""
+            element={<Navigate to="/showcase" />}
+            errorElement={<NotFound />}
+          />
+          <Route path="/product/:productId" element={<ProductItem />} />
+          <Route path="/showcase" element={<Showcase />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <MyFooter />
+      </TokenProvider>
     </BrowserRouter>
   );
 }

@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MyNavbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Navbar, Button, Form, Nav } from "react-bootstrap";
 import Logo from "../Assets/Logo.png";
+import { Link, useNavigate } from "react-router-dom";
+import authService from "../../services/auth";
+import { useToken } from "../../configurations/tokenContext";
 
 function MyNavbar() {
+  const { token, setToken } = useToken();
+
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    authService.logout();
+
+    setToken(null);
+  };
+
+  const onLogin = () => {
+    navigate("/login");
+  };
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
@@ -29,6 +45,15 @@ function MyNavbar() {
             <Nav.Link href="/games">Giochi</Nav.Link>
             <Nav.Link href="/preorders">Pre-ordini</Nav.Link>
           </Nav>
+          {token ? (
+            // Se il token esiste, mostra il pulsante Logout
+            <Button onClick={onLogout}>Logout</Button>
+          ) : (
+            // Se il token non esiste, mostra il link di login
+
+            <Button onClick={onLogin}>Login</Button>
+          )}
+
           <Form className="d-flex">
             <Form.Control
               type="search"

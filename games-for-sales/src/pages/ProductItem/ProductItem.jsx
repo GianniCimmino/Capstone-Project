@@ -1,42 +1,96 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import "./ProductItem.css";
+
 import productService from "../../services/products";
 
 const ProductItem = () => {
   const [product, setProduct] = useState([]);
 
-  const fetchProduct = async (product) => {
+  const { productId } = useParams();
+
+  const fetchProducts = async () => {
     try {
-      const response = await productService.getProduct();
+      const response = await productService.getProduct(productId);
       setProduct(response.data);
     } catch (error) {
-      console.error("Errore nel recupero del prodotto:", error);
+      console.error("Errore nel recupero dei prodotti:", error);
     }
   };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <Container className="mt-5 text-white">
       <Row>
-        {product.find}
-        <Col md={6}>
-          <Image src={product.image} alt="Immagine del prodotto" fluid />
+        <img src={product.imageUrl} alt={product.title} className="w-75"></img>
+      </Row>
+      <Row>
+        <h1>{product.title}</h1>
+        <Col className="m-5">
+          <h3>Riguardo al gioco</h3>
+          <p>{product.description}</p>
         </Col>
-        <Col md={6}>
-          <h2>{product.title}</h2>
-          <p>
-            Descrizione del videogioco. Questo è un gioco fantastico che ti
-            immerge in un mondo avvincente pieno di avventure e sfide.
-          </p>
-          <h3>Specifiche Tecniche:</h3>
+      </Row>
+      <Row>
+        <h1>Configurazioni</h1>
+        <Col className="m-5">
+          <h2>Requisiti Minimi:</h2>
           <ul>
-            <li>Requisiti di Sistema: Windows 10, macOS 10.14+</li>
-            <li>Processore: Intel Core i5-3470 / AMD FX 6350</li>
-            <li>Memoria: 8 GB di RAM</li>
-            <li>Scheda Grafica: NVIDIA GeForce GTX 660 / AMD Radeon HD 7870</li>
-            <li>Archiviazione: 50 GB di spazio disponibile</li>
+            <li>
+              <strong>Sistema Operativo:</strong> Windows 10
+            </li>
+            <li>
+              <strong>Processore:</strong> Intel Core i5-2400 / AMD FX-6300
+            </li>
+            <li>
+              <strong>RAM:</strong> 8 GB
+            </li>
+            <li>
+              <strong>Scheda Grafica:</strong> NVIDIA GeForce GTX 660 / AMD
+              Radeon HD 7850
+            </li>
+            <li>
+              <strong>Spazio su Disco:</strong> 50 GB di spazio libero
+            </li>
+            <li>
+              <strong>DirectX:</strong> Versione 11
+            </li>
+            <li>
+              <strong>Connessione Internet:</strong> Connessione a banda larga
+            </li>
+          </ul>
+
+          <h2>Requisiti Consigliati:</h2>
+          <ul>
+            <li>
+              <strong>Sistema Operativo:</strong> Windows 10
+            </li>
+            <li>
+              <strong>Processore:</strong> Intel Core i7-9700K / AMD Ryzen 5
+              3600X
+            </li>
+            <li>
+              <strong>RAM:</strong> 16 GB
+            </li>
+            <li>
+              <strong>Scheda Grafica:</strong> NVIDIA GeForce RTX 2060 / AMD
+              Radeon RX 5700
+            </li>
+            <li>
+              <strong>Spazio su Disco:</strong> SSD con 50 GB di spazio libero
+            </li>
+            <li>
+              <strong>DirectX:</strong> Versione 12
+            </li>
+            <li>
+              <strong>Connessione Internet:</strong> Connessione a banda larga
+            </li>
           </ul>
         </Col>
+        <Col></Col>
       </Row>
     </Container>
   );

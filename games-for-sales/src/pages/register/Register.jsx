@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth";
 
 const Register = () => {
@@ -61,6 +61,11 @@ const Register = () => {
                 <Button variant="primary" type="submit" className="btn-block">
                   Registrati!
                 </Button>
+                <Link to="/login">
+                  <Button variant="secondary" className="btn-block">
+                    Accedi
+                  </Button>
+                </Link>
               </Form>
             </Card.Body>
           </Card>

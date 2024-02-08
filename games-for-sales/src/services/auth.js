@@ -33,6 +33,7 @@ const authService = {
   logout: () => {
     // Rimuovi il token dal localStorage per "effettuare il logout"
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
   },
 };
 

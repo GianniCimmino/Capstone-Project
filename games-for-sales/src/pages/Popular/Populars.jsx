@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Modal, Row } from "react-bootstrap";
-import productService from "../../../services/products";
-import Product from "./Product";
-import ProductForm from "./ProductForm";
-import { useToken } from "../../../configurations/tokenContext";
+import productService from "../../services/products";
+import Popular from "./Popular";
+import ProductForm from "../showcase/components/ProductForm";
+import { useToken } from "../../configurations/tokenContext";
 
-const Products = () => {
+const Populars = () => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
-  const { token } = useToken();
-
+  const token = useToken();
   const fetchProducts = async () => {
     try {
       const response = await productService.getAllProducts();
       setProducts(response.data);
+      console.log(products);
     } catch (error) {
       console.error("Errore nel recupero dei prodotti:", error);
     }
@@ -59,15 +59,17 @@ const Products = () => {
       )}
 
       <Row xs={1} md={2} lg={3}>
-        {products.slice(0, 9).map((product) => (
-          <Product
-            key={product._id}
-            user={user}
-            product={product}
-            refreshProducts={fetchProducts}
-            removeProduct={(id) => onRemove(id)}
-          ></Product>
-        ))}
+        {products
+          .filter((product) => product.category == "Console")
+          .map((product) => (
+            <Popular
+              key={product._id}
+              user={user}
+              product={product}
+              refreshProducts={fetchProducts}
+              removeProduct={(id) => onRemove(id)}
+            ></Popular>
+          ))}
       </Row>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
@@ -81,4 +83,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Populars;
