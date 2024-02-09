@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import "./ProductGame.css";
-
 import productService from "../../services/products";
 
 const ProductGame = () => {

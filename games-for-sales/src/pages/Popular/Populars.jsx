@@ -48,6 +48,7 @@ const Populars = () => {
 
   return (
     <Container>
+      <h2 className=" text-white mb-4 mt-5">Console</h2>
       {(user.roles || []).includes("ADD_PRODUCT") && (
         <Row className="text-end m-4">
           <Button
@@ -60,7 +61,7 @@ const Populars = () => {
         </Row>
       )}
 
-      <Row xs={1} md={2} lg={3}>
+      <Row xs={1} md={2} lg={3} xl={4}>
         {products
           .filter((product) => product.category === "Console")
           .map((product) => (

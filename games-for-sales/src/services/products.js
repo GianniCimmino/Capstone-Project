@@ -24,6 +24,10 @@ const productService = {
   deleteProduct: async (productId) => {
     return axiosInstance.delete(`/products/${productId}`);
   },
+
+  getReviews: async () => {
+    return axiosInstance.get("/reviews/review");
+  },
 };
 
 export default productService;

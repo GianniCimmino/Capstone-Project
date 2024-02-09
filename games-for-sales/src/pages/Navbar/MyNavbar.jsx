@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MyNavbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Navbar, Button, Form, Nav } from "react-bootstrap";
 import Logo from "../Assets/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth";
 import { useToken } from "../../configurations/tokenContext";
 

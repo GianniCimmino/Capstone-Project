@@ -46,6 +46,7 @@ const Products = () => {
 
   return (
     <Container>
+      <h2 className=" text-white mb-4 mt-5">Giochi</h2>
       {(user.roles || []).includes("ADD_PRODUCT") && (
         <Row className="text-end m-4">
           <Button
@@ -58,16 +59,18 @@ const Products = () => {
         </Row>
       )}
 
-      <Row xs={1} md={2} lg={3}>
-        {products.slice(0, 9).map((product) => (
-          <Product
-            key={product._id}
-            user={user}
-            product={product}
-            refreshProducts={fetchProducts}
-            removeProduct={(id) => onRemove(id)}
-          ></Product>
-        ))}
+      <Row xs={1} md={2} lg={3} xl={4}>
+        {products
+          .filter((product) => product.category === "Giochi")
+          .map((product) => (
+            <Product
+              key={product._id}
+              user={user}
+              product={product}
+              refreshProducts={fetchProducts}
+              removeProduct={(id) => onRemove(id)}
+            ></Product>
+          ))}
       </Row>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
