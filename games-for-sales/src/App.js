@@ -6,22 +6,26 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Showcase from "./pages/showcase/Showcase.jsx";
 import NotFound from "./pages/notfound/NotFound";
-import ProductGame from "./pages/ProductGame/ProductGame.jsx";
+import ProductDetail from "./pages/ProductDetails/ProductDetail.jsx";
 import MyFooter from "./pages/Footer/MyFooter.jsx";
+import AllConsole from "./pages/AllConsole/AllConsole.jsx";
+import AllGame from "./pages/AllGames/AllGame.jsx";
 import { TokenProvider } from "./configurations/tokenContext.js";
 
 function App() {
   return (
     <BrowserRouter>
       <TokenProvider>
-        <MyNavbar />
+        {/* <MyNavbar /> */}
         <Routes>
           <Route
             path=""
             element={<Navigate to="/showcase" />}
             errorElement={<NotFound />}
           />
-          <Route path="/product/:productId" element={<ProductGame />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/console" element={<AllConsole />} />
+          <Route path="/games" element={<AllGame />} />
           <Route path="/showcase" element={<Showcase />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

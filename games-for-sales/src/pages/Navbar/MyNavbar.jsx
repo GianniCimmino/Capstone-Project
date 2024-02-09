@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./MyNavbar.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Navbar, Button, Form, Nav } from "react-bootstrap";
 import Logo from "../Assets/Logo.png";
+import { LiaUserAstronautSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth";
 import { useToken } from "../../configurations/tokenContext";
+import productService from "../../services/products";
 
-function MyNavbar() {
+function MyNavbar({ callback }) {
+  let [input, setInput] = useState("");
   const { token, setToken } = useToken();
+
+  // const fetchFilteredProducts = async () => {
+  //   try {
+  //     const response = await productService.getFilteredProducts();
+  //     setInput(response.data);
+  //   } catch (e) {}
+  // };
+
+  const handleChange = (value) => {
+    setInput(value);
+    callback(value);
+  };
 
   const navigate = useNavigate();
 
@@ -43,25 +58,31 @@ function MyNavbar() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/console">Console</Nav.Link>
             <Nav.Link href="/games">Giochi</Nav.Link>
-            <Nav.Link href="/preorders">Pre-ordini</Nav.Link>
           </Nav>
           {token ? (
-            // Se il token esiste, mostra il pulsante Logout
-            <Button onClick={onLogout}>Logout</Button>
+            <LiaUserAstronautSolid onClick={onLogout} />
           ) : (
-            // Se il token non esiste, mostra il link di login
-
-            <Button onClick={onLogin}>Login</Button>
+            <LiaUserAstronautSolid
+              className="color-icon circle"
+              onClick={onLogin}
+            />
           )}
 
           <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Cerca un gioco/console"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Cerca</Button>
+            <Button
+              variant="outline-success"
+              onClick={() => handleChange(input)}
+            >
+              Cerca
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

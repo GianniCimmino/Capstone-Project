@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import productService from "../../services/products";
-import ProductGame from "./ProductGame";
+import ProductDetail from "./ProductDetail";
 
-const ProductGames = () => {
+const ProductDetails = () => {
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
@@ -23,7 +23,7 @@ const ProductGames = () => {
     <Container>
       <Row>
         {products.map((product) => (
-          <ProductGame
+          <ProductDetail
             key={product._id}
             product={product}
             refreshProducts={fetchProducts}
@@ -34,4 +34,4 @@ const ProductGames = () => {
   );
 };
 
-export default ProductGames;
+export default ProductDetails;

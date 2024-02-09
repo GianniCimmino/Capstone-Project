@@ -5,17 +5,24 @@ import Product from "./Product";
 import ProductForm from "./ProductForm";
 import { useToken } from "../../../configurations/tokenContext";
 
-const Products = () => {
+const Products = ({ titleFilter = "" }) => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
+
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
   const { token } = useToken();
 
   const fetchProducts = async () => {
     try {
-      const response = await productService.getAllProducts();
-      setProducts(response.data);
+      if (titleFilter != "") {
+        const response = await productService.getFilteredProducts(titleFilter);
+
+        setProducts(response.data);
+      } else {
+        const response = await productService.getAllProducts();
+        setProducts(response.data);
+      }
     } catch (error) {
       console.error("Errore nel recupero dei prodotti:", error);
     }
@@ -39,6 +46,10 @@ const Products = () => {
       alert(error);
     }
   };
+
+  if (titleFilter !== "") {
+    fetchProducts();
+  }
 
   useEffect(() => {
     fetchProducts();

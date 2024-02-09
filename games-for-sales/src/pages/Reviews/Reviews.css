@@ -2,6 +2,15 @@
     background-color: #323232;
 }
 
+.background-review{
+    background-color: black;
+    padding: 20px 0 20px 0;
+}
+
+.author-text-color{
+    color: #57dbe0;
+}
+
 .offers{
     width: 80%;
     height: 60vh;
